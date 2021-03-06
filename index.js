@@ -67,7 +67,7 @@ function recurtweet(paramst){
         if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-      if(tweetsstats.length){
+      if(tweetsstats){
       for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
@@ -124,7 +124,7 @@ function retry(paramsq){
       if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-      if(tweetsstats.length){
+      if(tweetsstats){
       for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
