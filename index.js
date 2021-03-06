@@ -89,6 +89,7 @@ function recurtweet(paramst){
       }
         else{
             console.log("finished");
+             process.exit(1)
         }
     })
 }
@@ -132,6 +133,7 @@ function recurtweet(paramst){
       }
       else{
             console.log("finished");
+           process.exit(1)
         }
     })
 
