@@ -41,7 +41,10 @@ var paramsq={
               until:`${today}`, 
               count: 100
 }
- /*T.get('search/tweets', paramsq, function(err, data, response) {
+retry(paramsq);
+/*function retry(paramsq){
+ T.get('search/tweets', paramsq, function(err, data, response) {
+     if(data){
      const tweets = data
      const tweetsstats=tweets.statuses
      console.log(tweets.search_metadata.count);
@@ -50,13 +53,18 @@ var paramsq={
               console.log(tweetsstats[i].id + tweetsstats[i].text + tweetsstats[i].created_At + tweetsstats[i].user.name )
              console.log(i);
          }
+     }
+     else{
+         retry(paramsq);
+     }
     
- })*/
+ })
+}*/
+
 
 function recurtweet(paramst){
-    (async () => {
     T.get('search/tweets', paramst, function(err, data, response) {
-       
+        if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
       for(i=0;i<Object.keys(tweets.statuses).length;i++)
@@ -94,16 +102,21 @@ function recurtweet(paramst){
         else{
             console.log("finished");
              process.exit();
-        } })
-    }) ();
-} 
-(async () => {
+        }
+    }
+          else{
+          recurtweet(paramst);
+          }
+    }    )}
+
     // //1. GET RECENT TWEETS
+function retry(paramsq){
   T.get('search/tweets',paramsq, function(err, data, response) {
       
      //.map(tweet => `LANG: ${franc(tweet.text)} : ${tweet.text}`) //CHECK LANGUAGE
      // .map(tweet => tweet.text)
      // .filter(tweet => tweet.toLowerCase().includes('elon'));
+      if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
       for(i=0;i<Object.keys(tweets.statuses).length;i++)
@@ -139,8 +152,12 @@ function recurtweet(paramst){
             console.log("finished");
           process.exit();
         }
+  }
+      else{
+          retry(paramsq);
+      }
     })
-}) ()
+}
 
     // //2. REAL TIME MONITORING USING STREAM (HASHTAG)
     // var stream = T.stream('statuses/filter', { track: '#tesla' })
@@ -148,6 +165,6 @@ function recurtweet(paramst){
     //     console.log(tweet.text);
     //     console.log('Language: ' + franc(tweet.text));
     //     console.log('------');
-    // AAAAAAAAAAAAAAAAAAAAADVnNQEAAAAAYcqWSGflueeZWEvEyC7A5V28ByM%3DCTG97hkkD9sEOe5sZBOjZZP7iCbVuxbZV5uuFEH5wCkj2XLyCE }) 
+    // AAAAAAAAAAAAAAAAAAAAADVnNQEAAAAAYcqWSGflueeZWEvEyC7A5V28ByM%3DCTG97hkkD9sEOe5sZBOjZZP7iCbVuxbZV5uuFEH5wCkj2XLyCE }) */
 
 
