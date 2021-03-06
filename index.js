@@ -67,7 +67,8 @@ function recurtweet(paramst){
         if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-      for(i=0;i<Object.keys(tweets.statuses).length;i++)
+      if(tweetsstats.length){
+      for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
@@ -104,6 +105,10 @@ function recurtweet(paramst){
              process.exit();
         }
     }
+            else{
+                recurtweet(paramst);
+            }
+    }
           else{
           recurtweet(paramst);
           }
@@ -119,7 +124,8 @@ function retry(paramsq){
       if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-      for(i=0;i<Object.keys(tweets.statuses).length;i++)
+      if(tweetsstats.length){
+      for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
@@ -152,6 +158,10 @@ function retry(paramsq){
             console.log("finished");
           process.exit();
         }
+      }
+          else{
+              retry(paramsq);
+          }
   }
       else{
           retry(paramsq);
