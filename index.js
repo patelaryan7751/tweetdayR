@@ -29,14 +29,16 @@ var T = new Twit({
 var today = new Date();
               var dd= String(today.getDate()).padStart(2,'0');
               var tdd= String(today.getDate()+1).padStart(2,'0');
+              var ydd= String(today.getDate()-1).padStart(2,'0');
               var mm = String(today.getMonth() +1).padStart(2,'0');
               var yyyy= today.getFullYear();
               today=yyyy+'-'+mm+'-'+dd;
-              serdat=yyyy+mm+dd;
+              serdat=yyyy+mm+ydd;
               tomorrow=yyyy+'-'+mm+'-'+tdd;
+              yesterday=yyyy+'-'+mm+'-'+ydd;
 var paramsq={
-             q: `#rstats since:${today}`, 
-              until:`${tomorrow}`, 
+             q: `#rstats since:${yesterday}`, 
+              until:`${today}`, 
               count: 100
 }
  /*T.get('search/tweets', paramsq, function(err, data, response) {
@@ -59,7 +61,7 @@ function recurtweet(paramst){
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
-        date:today,
+        date:yesterday,
         id:tweetsstats[i].id,
         text:tweetsstats[i].text,
         created_at:tweetsstats[i].created_at,
@@ -80,8 +82,8 @@ function recurtweet(paramst){
       var nextr=rurl.searchParams.get("max_id");
       console.log(nextr);
           var paramst={
-              q: `#rstats since:${today}`, 
-              until:`${tomorrow}`, 
+              q: `#rstats since:${yesterday}`, 
+              until:`${today}`, 
               count: 100,
               max_id:nextr
           }
@@ -106,7 +108,7 @@ function recurtweet(paramst){
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
-        date:today,
+        date:yesterday,
         id:tweetsstats[i].id,
         text:tweetsstats[i].text,
         created_at:tweetsstats[i].created_at,
@@ -124,8 +126,8 @@ function recurtweet(paramst){
       var nextr=rurl.searchParams.get("max_id");
       console.log(nextr);
           var paramst={ 
-              q: `#rstats since:${today}`, 
-              until:`${tomorrow}`, 
+              q: `#rstats since:${yesterday}`, 
+              until:`${today}`, 
               count: 100,
               max_id:nextr
           }
