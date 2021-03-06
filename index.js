@@ -54,7 +54,9 @@ var paramsq={
  })*/
 
 function recurtweet(paramst){
+    (async () => {
     T.get('search/tweets', paramst, function(err, data, response) {
+       
       const tweets = data
       const tweetsstats=tweets.statuses
       for(i=0;i<Object.keys(tweets.statuses).length;i++)
@@ -92,10 +94,10 @@ function recurtweet(paramst){
         else{
             console.log("finished");
              process.exit();
-        }
-    })
-}
-
+        } })
+    }) ();
+} 
+(async () => {
     // //1. GET RECENT TWEETS
   T.get('search/tweets',paramsq, function(err, data, response) {
       
@@ -138,6 +140,7 @@ function recurtweet(paramst){
           process.exit();
         }
     })
+}) ()
 
     // //2. REAL TIME MONITORING USING STREAM (HASHTAG)
     // var stream = T.stream('statuses/filter', { track: '#tesla' })
