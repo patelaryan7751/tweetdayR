@@ -105,7 +105,7 @@ function recurtweet(paramst){
         }
     }
             else{
-                recurtweet(paramst);
+                 process.exit();
             }
     
     }    )}
@@ -154,9 +154,10 @@ function recurtweet(paramst){
           process.exit();
         }
       }
-          else{
-              retry(paramsq);
-          }
+      else{
+          process.exit(); 
+      }
+          
   
     })
 
