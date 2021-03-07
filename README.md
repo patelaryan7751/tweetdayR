@@ -1,7 +1,7 @@
 # tweetdayR
 This app fetches tweets containing #rstats from twitter
 
-![image](demo.png)
+![image](demo1.png)
 
 # Live app
 https://patelaryan7751.github.io/tweetdayR/frontend/
