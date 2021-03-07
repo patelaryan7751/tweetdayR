@@ -14,7 +14,8 @@ storageBucket: "tweet-rstats.appspot.com",
 messagingSenderId: "1038502402572",
 appId: "1:1038502402572:web:e0a69efb06b8eefdbeec29",
 measurementId: "G-H6QZE6547L"});
-
+ var cv=200;
+ var dv=200;
 const apikey = 'AQTBQGS01OPlJOr1poBM5LHYW'
 const apiSecretKey = 'BAecP5fg8nnKmxxz4v5PJCXIT7ng4Y1OFzqOphV5BpSf07zLoT'
 const accessToken = '1271766871964962817-FqjNzVvUDd7Rwylx9PmWeqUEpVOnhy'
@@ -61,6 +62,7 @@ var paramsq={
  })
 }*/
 
+retry(paramsq);
 
 function recurtweet(paramst){
     T.get('search/tweets', paramst, function(err, data, response) {
@@ -70,7 +72,8 @@ function recurtweet(paramst){
         if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-      
+      if(tweetsstats){
+          var cv=200;
       for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
@@ -107,12 +110,19 @@ function recurtweet(paramst){
             console.log("finished");
              process.exit();
         }
+        } else{
+            cv=cv*2;
+            setTimeout(function(){
+                
+                recurtweet(paramst);
+            },cv)
         }
+    }
     
     }    )}
 
     // //1. GET RECENT TWEETS
-
+function retry(paramsq){
   T.get('search/tweets',paramsq, function(err, data, response) {
       if(err){
           console.log('err', err);
@@ -123,7 +133,8 @@ function recurtweet(paramst){
      // .filter(tweet => tweet.toLowerCase().includes('elon'));
       const tweets = data
       const tweetsstats=tweets.statuses
-      
+      if(tweetsstats){
+          var dv=200;
             for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
@@ -158,10 +169,16 @@ function recurtweet(paramst){
           process.exit();
         }
     
-     
+      } else{
+          dv=dv*2;
+            setTimeout(function(){
+                
+                retry(paramsq);
+            },dv)
+      }
           
   }
-    })
+    })}
 
 
 
