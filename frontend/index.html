@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+            crossorigin="anonymous"
+        />
         <title>Tweets</title>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
-
                 <h1 style="color: aliceblue;"><i class="fab fa-twitter"></i> Tweets #rstats</h1>
             </div>
-      
-
         </nav>
         <div class="container">
-            <br>
-    <h1>Choose a date to get tweets</h1>
-            <br>
-<div id="dpost" class="row card-deck">
-    
-    <br><br>
-    <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="addon-wrapping">Date</span>
-  <input type="date" id="dt" name="date" class="form-control" aria-describedby="addon-wrapping">
-        <button id="sbtn" class="btn btn-primary">Set Date</button>
-</div>
-    
-    
-        </div>
-            <br><br>
-    <center id="tbtn" style="display: none"><button   class="btn btn-primary">Click to Get Tweets</button>
-            </center>
+            <br />
+            <h1>Choose a date to get tweets</h1>
+            <br />
+            <div id="dpost" class="row card-deck">
+                <br />
+                <br />
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">Date</span>
+                    <input type="date" id="dt" name="date" class="form-control" aria-describedby="addon-wrapping" />
+                    <button id="sbtn" class="btn btn-primary">Set Date</button>
+                </div>
+            </div>
+            <br />
+            <br />
+            <center id="tbtn" style="display: none;"><button class="btn btn-primary">Click to Get Tweets</button></center>
             <div class="col-12 mt-4">
-      
-      <div class="card-body"  style="background-color: aliceblue">
-          
-       <center> <h5 class="card-field card-title" style="font-weight:700;"> <i class="fa fa-book"></i> Note</h5>
-        <p class="card-text">Do not choose dates below than 5th March 2021</p>
-           <p class="card-text">Do not choose dates in future</p>
-           <p class="card-text">All Tweets of each day is added everyday at 00:00 UTC</p>
-          
-           <br><br></center>
-      </div>
-    </div>
+                <div class="card-body" style="background-color: aliceblue;">
+                    <center>
+                        <h5 class="card-field card-title" style="font-weight: 700;"><i class="fa fa-book"></i> Note</h5>
+                        <p class="card-text">Do not choose dates before than 5th March 2021</p>
+                        <p class="card-text" id="dyn"></p>
+                        <p class="card-text">All Tweets of each day is added everyday at 00:00 UTC</p>
+
+                        <br />
+                        <br />
+                    </center>
+                </div>
+            </div>
         </div>
         <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
         <script src="config.js"></script>
         <script src="work.js"></script>
     </body>
