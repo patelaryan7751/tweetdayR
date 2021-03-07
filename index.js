@@ -66,8 +66,7 @@ function recurtweet(paramst){
     T.get('search/tweets', paramst, function(err, data, response) {
       const tweets = data
       const tweetsstats=tweets.statuses
-      if(tweetsstats){
-      for(i=0;i<tweetsstats.length;i++)
+       setTimeout(function(){      for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
@@ -102,11 +101,9 @@ function recurtweet(paramst){
         else{
             console.log("finished");
              process.exit();
-        }
-    }
-            else{
-                 process.exit();
-            }
+        }},1000)
+
+
     
     }    )}
 
@@ -119,8 +116,8 @@ function recurtweet(paramst){
      // .filter(tweet => tweet.toLowerCase().includes('elon'));
       const tweets = data
       const tweetsstats=tweets.statuses
-      if(tweetsstats){
-      for(i=0;i<tweetsstats.length;i++)
+      setTimeout(function(){
+            for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
@@ -153,10 +150,9 @@ function recurtweet(paramst){
             console.log("finished");
           process.exit();
         }
-      }
-      else{
-          process.exit(); 
-      }
+      },1000)
+    
+     
           
   
     })
