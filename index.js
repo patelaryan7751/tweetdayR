@@ -39,9 +39,9 @@ var today = new Date();
 var paramsq={
              q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 100
+              count: 50
 }
-retry(paramsq);
+
 /*function retry(paramsq){
  T.get('search/tweets', paramsq, function(err, data, response) {
      if(data){
@@ -64,7 +64,6 @@ retry(paramsq);
 
 function recurtweet(paramst){
     T.get('search/tweets', paramst, function(err, data, response) {
-        if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
       if(tweetsstats){
@@ -95,7 +94,7 @@ function recurtweet(paramst){
           var paramst={
               q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 100,
+              count: 50,
               max_id:nextr
           }
           recurtweet(paramst);
@@ -108,20 +107,16 @@ function recurtweet(paramst){
             else{
                 recurtweet(paramst);
             }
-    }
-          else{
-          recurtweet(paramst);
-          }
+    
     }    )}
 
     // //1. GET RECENT TWEETS
-function retry(paramsq){
+
   T.get('search/tweets',paramsq, function(err, data, response) {
       
      //.map(tweet => `LANG: ${franc(tweet.text)} : ${tweet.text}`) //CHECK LANGUAGE
      // .map(tweet => tweet.text)
      // .filter(tweet => tweet.toLowerCase().includes('elon'));
-      if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
       if(tweetsstats){
@@ -149,7 +144,7 @@ function retry(paramsq){
           var paramst={ 
               q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 100,
+              count: 50,
               max_id:nextr
           }
           recurtweet(paramst);
@@ -162,12 +157,9 @@ function retry(paramsq){
           else{
               retry(paramsq);
           }
-  }
-      else{
-          retry(paramsq);
-      }
+  
     })
-}
+
 
     // //2. REAL TIME MONITORING USING STREAM (HASHTAG)
     // var stream = T.stream('statuses/filter', { track: '#tesla' })
