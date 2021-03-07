@@ -64,9 +64,14 @@ var paramsq={
 
 function recurtweet(paramst){
     T.get('search/tweets', paramst, function(err, data, response) {
+        if(err){
+          console.log('err', err);
+}
+        if(data){
       const tweets = data
       const tweetsstats=tweets.statuses
-       setTimeout(function(){      for(i=0;i<tweetsstats.length;i++)
+      
+      for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
       var data={
@@ -101,22 +106,24 @@ function recurtweet(paramst){
         else{
             console.log("finished");
              process.exit();
-        }},1000)
-
-
+        }
+        }
     
     }    )}
 
     // //1. GET RECENT TWEETS
 
   T.get('search/tweets',paramsq, function(err, data, response) {
-      
+      if(err){
+          console.log('err', err);
+}
+      if(data){
      //.map(tweet => `LANG: ${franc(tweet.text)} : ${tweet.text}`) //CHECK LANGUAGE
      // .map(tweet => tweet.text)
      // .filter(tweet => tweet.toLowerCase().includes('elon'));
       const tweets = data
       const tweetsstats=tweets.statuses
-      setTimeout(function(){
+      
             for(i=0;i<tweetsstats.length;i++)
          {
              var kpliref = firebase.database().ref(`tweets/${serdat}/${tweetsstats[i].id}`);
@@ -150,12 +157,12 @@ function recurtweet(paramst){
             console.log("finished");
           process.exit();
         }
-      },1000)
     
      
           
-  
+  }
     })
+
 
 
     // //2. REAL TIME MONITORING USING STREAM (HASHTAG)
