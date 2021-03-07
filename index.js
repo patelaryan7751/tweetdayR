@@ -39,7 +39,7 @@ var today = new Date();
 var paramsq={
              q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 50
+              count: 100
 }
 
 /*function retry(paramsq){
@@ -94,7 +94,7 @@ function recurtweet(paramst){
           var paramst={
               q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 50,
+              count: 100,
               max_id:nextr
           }
           recurtweet(paramst);
@@ -144,7 +144,7 @@ function recurtweet(paramst){
           var paramst={ 
               q: `#rstats since:${yesterday}`, 
               until:`${today}`, 
-              count: 50,
+              count: 100,
               max_id:nextr
           }
           recurtweet(paramst);
