@@ -1,12 +1,21 @@
 var today = new Date();
+var yesterday = new Date(today)
+yesterday.setDate(yesterday.getDate()-1);
+
+var utctdd=String(today.getUTCDate()).padStart(2, "0");
 var dd = String(today.getDate()).padStart(2, "0");
-var tdd = String(today.getDate() + 1).padStart(2, "0");
-var ydd = String(today.getDate() - 1).padStart(2, "0");
 var mm = String(today.getMonth() + 1).padStart(2, "0");
 var yyyy = today.getFullYear();
-yesterday = ydd + "-" + mm + "-" + yyyy;
-ysef= yyyy+ "-" + mm + "-" + ydd;
-document.getElementById("dyn").textContent = `Do not choose dates after ${yesterday} .  ${yesterday} this date can be choosen`;
+
+var utcdd=String(yesterday.getUTCDate()).padStart(2, "0");
+var ysdd = String(yesterday.getDate()).padStart(2, "0");
+var ysmm = String(yesterday.getMonth() + 1).padStart(2, "0");
+var ysyyyy = yesterday.getFullYear();
+today =utctdd + "-" + mm + "-" + yyyy;
+yesterday = utcdd + "-" + ysmm + "-" + ysyyyy;
+ysef= ysyyyy+ "-" + ysmm + "-" + utcdd;
+document.getElementById("utc").textContent=`Today's UTC Date: ${today}` 
+document.getElementById("dyn").textContent = `Do not choose dates after ${yesterday} (UTC)  .  ${yesterday} (UTC) this date can be choosen`;
 document.querySelector("#sbtn").onclick = function () {
     var dti = document.getElementById("dt").value.split("-").join("");
     console.log(dti);

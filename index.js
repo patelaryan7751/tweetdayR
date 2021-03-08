@@ -37,15 +37,18 @@ var T = new Twit({
 
 //Date Calculation
 var today = new Date();
+var yesterday = new Date(today);
+yesterday.setDate(yesterday.getDate()-1);
+var ysdd = String(yesterday.getDate()).padStart(2, "0");
+var ysmm = String(yesterday.getMonth() + 1).padStart(2, "0");
+var ysyyyy = yesterday.getFullYear();
+
 var dd = String(today.getDate()).padStart(2, "0");
-var tdd = String(today.getDate() + 1).padStart(2, "0");
-var ydd = String(today.getDate() - 1).padStart(2, "0");
 var mm = String(today.getMonth() + 1).padStart(2, "0");
 var yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
-serdat = yyyy + mm + ydd;
-tomorrow = yyyy + "-" + mm + "-" + tdd;
-yesterday = yyyy + "-" + mm + "-" + ydd;
+serdat = ysyyyy + ysmm + ysdd;
+yesterday = ysyyyy + "-" + ysmm + "-" + ysdd;
 var paramsq = {
     q: `#rstats since:${yesterday}`,
     until: `${today}`,
